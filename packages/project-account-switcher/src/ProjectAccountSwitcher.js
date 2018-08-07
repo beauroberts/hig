@@ -25,7 +25,8 @@ export default class ProjectAccountSwitcher extends Component {
     ),
     projectTitle: PropTypes.string,
     onChange: PropTypes.func,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    onTargetClick: PropTypes.func
   };
 
   state = {
@@ -42,7 +43,8 @@ export default class ProjectAccountSwitcher extends Component {
       projects,
       projectTitle,
       onChange,
-      onClick
+      onClick,
+      onTargetClick
     } = this.props;
 
     return (
@@ -52,13 +54,16 @@ export default class ProjectAccountSwitcher extends Component {
         activeProjectId={activeProjectId}
         onChange={onChange}
         onClick={onClick}
+        onTargetClick={onTargetClick}
         projects={projects}
       >
         {({
           activeAccountId,
           activeProjectId,
           handleAccountClick,
-          handleProjectClick
+          handleProjectClick,
+          handleTargetClick,
+          open
         }) => (
           <ProjectAccountSwitcherPresenter
             accounts={accounts}
@@ -67,6 +72,8 @@ export default class ProjectAccountSwitcher extends Component {
             activeProjectId={activeProjectId}
             onAccountClick={handleAccountClick}
             onProjectClick={handleProjectClick}
+            onTargetClick={handleTargetClick}
+            open={open}
             projects={projects}
             projectTitle={projectTitle}
           />
